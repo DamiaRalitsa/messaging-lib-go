@@ -1,6 +1,7 @@
 package common
 
 import (
+	"context"
 	"encoding/json"
 	"time"
 )
@@ -13,4 +14,8 @@ type Message struct {
 	Status     string
 	RetryCount int
 	CreatedAt  time.Time
+}
+
+type MessageHandler interface {
+	Dispatch(ctx context.Context, message Message) error
 }
